@@ -7,6 +7,7 @@
                  [org.clojure/tools.logging "0.4.1"]
                  [io.pedestal/pedestal.service "0.5.5"]
                  [org.clojure/java.jdbc "0.7.7"]
+                 [hikari-cp "2.6.0"]
                  [org.postgresql/postgresql "42.2.2"]
                  [com.stuartsierra/component "0.3.2"]
                  [environ "1.1.0"]
