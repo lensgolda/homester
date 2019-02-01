@@ -29,7 +29,7 @@
   component/Lifecycle
 
   (start [this]
-    (let [db-spec (safe-get-in this [:config :db])]
+    (let [db-spec (safe-get-in this [:config :database])]
       (assoc this :datasource (hikari/make-datasource db-spec))))
 
   (stop [this]
@@ -38,10 +38,14 @@
     (assoc this :datasource nil))
 
   db/Databaseable
-  (execute [this sql])
-  (execute! [this sql])
-  (execute-in-transaction [this f])
-  (is-duplicate-ex? [_ ex]))
+  (execute [this sql]
+    (execute* this sql))
+  (execute! [this sql]
+    (execute!* this sql))
+  (execute-in-transaction [this f]
+    (execute-in-transaction* this f))
+  (is-duplicate-ex? [_ ex]
+    (is-duplicate-ex?* _ ex)))
 
 (defn create
   []
