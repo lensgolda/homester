@@ -7,13 +7,13 @@
                  [org.clojure/tools.logging "0.4.1"]
                  [io.pedestal/pedestal.service "0.5.5"]
                  [org.clojure/java.jdbc "0.7.7"]
-                 [hikari-cp "2.6.0"]
+                 [hikari-cp "2.7.0"]
                  [org.postgresql/postgresql "42.2.2"]
                  [com.stuartsierra/component "0.3.2"]
                  [environ "1.1.0"]
                  [prismatic/plumbing "0.5.5"]
-                 [honeysql "0.9.2"]
-                 [nilenso/honeysql-postgres "0.2.4"]
+                 [honeysql "0.9.4"]
+                 [nilenso/honeysql-postgres "0.2.5"]
 
                  ;; Remove this line and uncomment one of the next lines to
                  ;; use Immutant or Tomcat instead of Jetty:

@@ -4,6 +4,5 @@
             [environ.core :refer [env]]
             [clojure.edn :as edn]))
 
-(reloaded.repl/set-init! #(system/->system (-> (env :app-config)
-                                               (slurp)
+(reloaded.repl/set-init! #(system/->system (-> (slurp (env :app-config))
                                                (edn/read-string))))

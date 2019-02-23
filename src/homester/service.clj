@@ -1,15 +1,16 @@
 (ns homester.service
-  (:require [io.pedestal.http :as http]
-            [io.pedestal.http.route :as route]
-            [io.pedestal.http.body-params :as body-params]
-            [ring.util.response :as ring-resp]))
+  (:require [ring.util.response :refer [response]]
+            [honeysql.core :as sql]
+            [homester.db :as db]))
 
-(defn about-page
-  [request]
-  (ring-resp/response (format "Clojure %s - served from %s"
-                              (clojure-version)
-                              (route/url-for ::about-page))))
+(defn test-clojure-version
+  [req]
+  (response (format "Clojure %s" (clojure-version))))
 
-(defn home-page
-  [request]
-  (ring-resp/response "Hello World!"))
+(defn test-db
+  [{<db> :component}]
+  (let [data (-> (sql/build {:select :*
+                             :from :cities})
+                 (sql/format)
+                 (->> (db/fetch-one <db>)))]
+    (response data)))

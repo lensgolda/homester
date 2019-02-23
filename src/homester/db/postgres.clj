@@ -1,6 +1,6 @@
 (ns homester.db.postgres
   (:require [com.stuartsierra.component :as component]
-            [plumbing.core :refer [safe-get-in]]
+            [plumbing.core :refer [safe-get-in safe-get]]
             [hikari-cp.core :as hikari]
             [homester.db :as db]
             [clojure.tools.logging :as log]
@@ -33,7 +33,7 @@
       (assoc this :datasource (hikari/make-datasource db-spec))))
 
   (stop [this]
-    (let [datasource (:datasource this)]
+    (let [datasource (safe-get this :datasource)]
       (hikari/close-datasource datasource))
     (assoc this :datasource nil))
 

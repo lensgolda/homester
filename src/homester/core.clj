@@ -3,7 +3,8 @@
             [environ.core :refer [env]]
             [homester.system :as system]
             [com.stuartsierra.component :as component]
-            [clojure.tools.logging :as log]))
+            [clojure.tools.logging :as log])
+  (:gen-class))
 
 (defn -main
   [& args]
